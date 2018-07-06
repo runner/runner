@@ -1,0 +1,37 @@
+{
+    "name": "runner",
+    "version": "2.0.0",
+    "description": "Simple task runner.",
+    "author": {
+        "name": "Stanislav Kalashnik",
+        "email": "darkpark.main@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/runner/runner"
+    },
+    "bin": {
+        "runner": "./bin/cli.js"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "test": "npm run lint"
+    },
+    "dependencies": {
+        "@cjssdk/runner": "^1.5.0",
+        "@runner/logger": "^1.0.0",
+        "chokidar": "^2.0.4",
+        "commander": "^2.16.0"
+    },
+    "devDependencies": {
+        "@cjssdk/eslint-config": "^1.1.2",
+        "eslint": "^4.19.1"
+    },
+    "keywords": [
+        "task",
+        "runner",
+        "core",
+        "cli"
+    ],
+    "license": "GPL-3.0"
+}
