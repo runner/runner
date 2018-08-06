@@ -21,7 +21,7 @@
         "cjs-runner": "^1.5.1",
         "chokidar": "^2.0.4",
         "commander": "^2.16.0",
-        "runner-logger": "^1.0.0"
+        "runner-logger": "^1.0.1"
     },
     "devDependencies": {
         "cjs-eslint": "^1.1.1"
