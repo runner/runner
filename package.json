@@ -20,7 +20,7 @@
     "dependencies": {
         "cjs-runner": "^1.5.1",
         "chokidar": "^2.0.4",
-        "commander": "^2.16.0",
+        "commander": "^2.17.0",
         "runner-logger": "^1.0.1"
     },
     "devDependencies": {
