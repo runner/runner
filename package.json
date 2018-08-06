@@ -18,7 +18,7 @@
         "test": "npm run lint"
     },
     "dependencies": {
-        "@cjssdk/runner": "^1.5.0",
+        "cjs-runner": "^1.5.1",
         "@runner/logger": "^1.0.0",
         "chokidar": "^2.0.4",
         "commander": "^2.16.0"

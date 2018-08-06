@@ -7,7 +7,7 @@
 
 var //path     = require('path'),
     chokidar = require('chokidar'),
-    Runner   = require('@cjssdk/runner'),
+    Runner   = require('cjs-runner'),
     log      = require('@runner/logger'),
     runner   = new Runner();
 

@@ -83,7 +83,7 @@ runner.task('make', function () {
 ```
 
 More examples of tasks creation and execution are available
-in the [@cjssdk/runner](https://www.npmjs.com/package/@cjssdk/runner) package.
+in the [cjs-runner](https://www.npmjs.com/package/cjs-runner) package.
 
 Add an alias to an existing task:
 
