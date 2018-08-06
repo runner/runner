@@ -24,8 +24,7 @@
         "commander": "^2.16.0"
     },
     "devDependencies": {
-        "@cjssdk/eslint-config": "^1.1.2",
-        "eslint": "^4.19.1"
+        "cjs-eslint": "^1.1.1"
     },
     "keywords": [
         "task",
