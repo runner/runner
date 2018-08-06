@@ -8,7 +8,7 @@
 var //path     = require('path'),
     chokidar = require('chokidar'),
     Runner   = require('cjs-runner'),
-    log      = require('@runner/logger'),
+    log      = require('runner-logger'),
     runner   = new Runner();
 
 
@@ -25,7 +25,7 @@ runner.alias = function ( alias, taskId ) {
 };
 
 
-// @todo: move to @runner/plugin-watcher ???
+// @todo: move to runner-plugin-watcher ???
 runner.watch = function ( glob, task ) {
     var taskId;
 
@@ -53,7 +53,7 @@ runner.watch.config = {
     }
 };
 
-// @todo: move to @runner/plugin-keystroke
+// @todo: move to runner-plugin-keystroke
 runner.keystrokes = {};
 
 runner.keystroke = function ( id, rule ) {

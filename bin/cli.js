@@ -9,7 +9,7 @@
 
 var path        = require('path'),
     program     = require('commander'),
-    log         = require('@runner/logger'),
+    log         = require('runner-logger'),
     runner      = require('../index'),
     packageData = require('../package.json');
 
