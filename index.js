@@ -5,8 +5,7 @@
 
 'use strict';
 
-var //path     = require('path'),
-    chokidar = require('chokidar'),
+var chokidar = require('chokidar'),
     Runner   = require('cjs-runner'),
     log      = require('runner-logger'),
     runner   = new Runner();
