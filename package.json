@@ -19,12 +19,12 @@
     },
     "dependencies": {
         "cjs-runner": "^1.5.1",
-        "chokidar": "^2.0.4",
-        "commander": "^2.17.0",
+        "chokidar": "^3.0.0",
+        "commander": "^2.20.0",
         "runner-logger": "^1.0.1"
     },
     "devDependencies": {
-        "cjs-eslint": "^1.1.1"
+        "cjs-eslint": "^1.2.4"
     },
     "keywords": [
         "task",
