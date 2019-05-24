@@ -7,7 +7,8 @@
 
 'use strict';
 
-var path        = require('path'),
+const
+    path        = require('path'),
     program     = require('commander'),
     log         = require('runner-logger'),
     runner      = require('../index'),

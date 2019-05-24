@@ -5,7 +5,8 @@
 
 'use strict';
 
-var chokidar = require('chokidar'),
+const
+    chokidar = require('chokidar'),
     Runner   = require('cjs-runner'),
     log      = require('runner-logger'),
     runner   = new Runner();
@@ -26,7 +27,7 @@ runner.alias = function ( alias, taskId ) {
 
 // @todo: move to runner-plugin-watcher ???
 runner.watch = function ( glob, task ) {
-    var taskId;
+    let taskId;
 
     function handler ( name ) {
         log.info('changed: %s run: %s', log.colors.magenta(name), log.colors.cyan(taskId));
@@ -56,7 +57,7 @@ runner.watch.config = {
 runner.keystrokes = {};
 
 runner.keystroke = function ( id, rule ) {
-    //var key = [];
+    //const key = [];
 
     if ( rule && runner.tasks[id] ) {
         //rule = rule.toLowerCase().split('+');
@@ -76,7 +77,7 @@ runner.keystroke = function ( id, rule ) {
 
 
 process.stdin.on('keypress', function ( str, key ) {
-    var keystroke = [];
+    let keystroke = [];
 
     key.ctrl  && keystroke.push('ctrl');
     key.meta  && keystroke.push('alt');

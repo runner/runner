@@ -71,7 +71,7 @@ npx runner -c tasks/develop.js
 Add to the scope:
 
 ```js
-var runner = require('runner');
+const runner = require('runner');
 ```
 
 Create a simple task:
