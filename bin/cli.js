@@ -5,24 +5,21 @@
  * @license GNU GENERAL PUBLIC LICENSE Version 3
  */
 
-'use strict';
+import path from 'path';
+import {Command} from 'commander/esm.mjs';
+import log from 'runner-logger';
+import runner from '../index.js';
 
-const
-    path        = require('path'),
-    program     = require('commander'),
-    log         = require('runner-logger'),
-    runner      = require('../index'),
-    packageData = require('../package.json');
-
+const program = new Command();
 
 program
-    .version(packageData.version)
+    .version('4.0.0')
     .usage('[options] [<task>]')
-    .description(packageData.description)
+    .description('Simple task runner')
     .option('-c, --config [file]', 'configuration file with tasks', 'runner.js')
     .option('-s, --serial', 'run all given tasks sequentially (instead of in parallel)');
 
-program.on('--help', function () {
+program.on('--help', () => {
     console.log([
         '',
         '  Examples:',
@@ -36,29 +33,34 @@ program.on('--help', function () {
 });
 
 program.parse(process.argv);
+const options = program.opts();
 
 // config absolute path
-program.config = path.normalize(path.join(process.cwd(), program.config));
+options.config = path.normalize(path.join(process.cwd(), options.config));
 
-// load config
-log.info('config file: ' + log.colors.green(program.config));
-require(program.config);
+(async () => {
+    // load config
+    log.info('config file: ' + log.colors.green(options.config));
+    await import(options.config);
 
-// run
-if ( program.args.length === 1 ) {
-    // just a single task
-    runner.run(program.args[0]);
-} else {
-    if ( program.args.length > 1 ) {
-        // list of tasks
-        log.info('run mode: ' + (program.serial ? 'serial' : 'parallel'));
+    // run
+    if ( program.args.length === 1 ) {
+        // just a single task
+        runner.run(program.args[0]);
+    } else {
+        if ( program.args.length > 1 ) {
+            // list of tasks
+            log.info('run mode: ' + (options.serial ? 'serial' : 'parallel'));
 
-        if ( program.serial ) {
-            runner.task('default', runner.serial.apply(runner, program.args));
-        } else {
-            runner.task('default', runner.parallel.apply(runner, program.args));
+            if ( options.serial ) {
+                //runner.task('default', runner.serial.apply(runner, program.args));
+                runner.task('default', runner.serial(...program.args));
+            } else {
+                //runner.task('default', runner.parallel.apply(runner, program.args));
+                runner.task('default', runner.parallel(...program.args));
+            }
         }
-    }
 
-    runner.start();
-}
+        runner.start();
+    }
+})();

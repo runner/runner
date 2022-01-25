@@ -3,14 +3,11 @@
  * @license GNU GENERAL PUBLIC LICENSE Version 3
  */
 
-'use strict';
+import chokidar from 'chokidar';
+import Runner from 'cjs-runner';
+import log from 'runner-logger';
 
-const
-    chokidar = require('chokidar'),
-    Runner   = require('cjs-runner'),
-    log      = require('runner-logger'),
-    runner   = new Runner();
-
+const runner = new Runner();
 
 // should be removed after rework!
 global.DEVELOP = true;
@@ -27,18 +24,16 @@ runner.alias = function ( alias, taskId ) {
 
 // @todo: move to runner-plugin-watcher ???
 runner.watch = function ( glob, task ) {
-    let taskId;
-
-    function handler ( name ) {
-        log.info('changed: %s run: %s', log.colors.magenta(name), log.colors.cyan(taskId));
-        runner.run(task);
-    }
-
     console.assert(arguments.length === 2, 'wrong arguments number');
     console.assert(typeof task === 'string' || typeof task === 'function', 'task should be a string or a function');
     console.assert(!!task, 'task is empty');
 
-    taskId = typeof task === 'string' ? task : task.name || '<noname>';
+    const taskId = typeof task === 'string' ? task : task.name || '<noname>';
+
+    const handler = name => {
+        log.info('changed: %s run: %s', log.colors.magenta(name), log.colors.cyan(taskId));
+        runner.run(task);
+    };
 
     return chokidar.watch(glob, runner.watch.config)
         .on('change', handler)
@@ -76,7 +71,7 @@ runner.keystroke = function ( id, rule ) {
 };
 
 
-process.stdin.on('keypress', function ( str, key ) {
+process.stdin.on('keypress', ( str, key ) => {
     let keystroke = [];
 
     key.ctrl  && keystroke.push('ctrl');
@@ -91,15 +86,15 @@ process.stdin.on('keypress', function ( str, key ) {
 });
 
 
-runner.addListener('start', function ( event ) {
+runner.addListener('start', event => {
     log.info('starting %s ...', log.colors.cyan(event.id));
 });
 
-runner.addListener('finish', function ( event ) {
+runner.addListener('finish', event => {
     log.info('finished %s after %s ms', log.colors.cyan(event.id), log.colors.magenta(event.time));
 });
 
-runner.addListener('error', function ( event ) {
+runner.addListener('error', event => {
     if ( event.code === 404 ) {
         log.fail('task %s is missing', log.colors.bold(event.id));
     }
@@ -112,4 +107,4 @@ runner.addListener('error', function ( event ) {
 
 
 // public
-module.exports = runner;
+export default runner;

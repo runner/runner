@@ -1,4 +1,4 @@
 .eslintrc.js
 .github
-.idea
 .travis.yml
+runner.example.js

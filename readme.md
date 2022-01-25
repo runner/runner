@@ -3,8 +3,6 @@ Simple task runner
 
 [![build status](https://img.shields.io/travis/runner/runner.svg?style=flat-square)](https://travis-ci.org/runner/runner)
 [![npm version](https://img.shields.io/npm/v/runner.svg?style=flat-square)](https://www.npmjs.com/package/runner)
-[![dependencies status](https://img.shields.io/david/runner/runner.svg?style=flat-square)](https://david-dm.org/runner/runner)
-[![devDependencies status](https://img.shields.io/david/dev/runner/runner.svg?style=flat-square)](https://david-dm.org/runner/runner?type=dev)
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/runner)
 [![RunKit](https://img.shields.io/badge/RunKit-try-yellow.svg?style=flat-square)](https://npm.runkit.com/runner)
 
@@ -71,7 +69,7 @@ npx runner -c tasks/develop.js
 Add to the scope:
 
 ```js
-const runner = require('runner');
+import runner from 'runner';
 ```
 
 Create a simple task:

@@ -8,5 +8,11 @@
 // public
 module.exports = {
     // base rules
-    extends: require.resolve('cjs-eslint')
+    extends: require.resolve('cjs-eslint'),
+
+    parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        allowImportExportEverywhere: true
+    }
 };
